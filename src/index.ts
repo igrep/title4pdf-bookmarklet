@@ -55,16 +55,12 @@ const ddTitleElement = document.createElement("dd");
 ddTitleElement.textContent = originalTitle;
 dlElement.appendChild(ddTitleElement);
 
-const reader = new FileReader();
-reader.onload = () => {
-  const a = document.createElement("a");
-  a.href = reader.result as string;
-  a.download = `${document.title}.html`;
-  a.click();
-};
-reader.readAsDataURL(
+const a = document.createElement("a");
+a.href = URL.createObjectURL(
   new Blob(
     [dlElement.outerHTML],
     { type: "text/html;charset=UTF-8" },
   )
 );
+a.download = `${document.title}.html`;
+a.click();
