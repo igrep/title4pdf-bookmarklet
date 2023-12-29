@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -u
+
+npx eslint --fix -- src/index.ts
+git add -- src/index.ts
