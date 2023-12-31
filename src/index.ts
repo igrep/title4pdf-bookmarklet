@@ -55,6 +55,14 @@ const ddTitleElement = document.createElement("dd");
 ddTitleElement.textContent = originalTitle;
 dlElement.appendChild(ddTitleElement);
 
+const dtPdfNameElement = document.createElement("dt");
+dtPdfNameElement.textContent = "PDF Name";
+dlElement.appendChild(dtPdfNameElement);
+
+const ddPdfNameElement = document.createElement("dd");
+ddPdfNameElement.textContent = document.title;
+dlElement.appendChild(ddPdfNameElement);
+
 const a = document.createElement("a");
 a.href = URL.createObjectURL(
   new Blob(
