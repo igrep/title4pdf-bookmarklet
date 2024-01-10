@@ -4,6 +4,7 @@
   "description": "Bookmarklet to open the comments page of Hatena Bookmark.",
   "main": "dist/src/index.js",
   "scripts": {
+    "build-win": "tsc && bookmarkletify -i dist/index.js | clip",
     "build": "tsc && bookmarkletify -i dist/index.js | pbcopy",
     "lint": "eslint --ext .ts src",
     "test": "vitest run"
