@@ -14,15 +14,15 @@ function fnv1a(s: string): number {
   return r;
 }
 
-const fnvHash = fnv1a(document.title).toString(32);
-leftAvailable -= fnvHash.length;
-
 // Emojis are not allowed for file names in Dropbox.
 // And delete file system unsafe characters.
 const re = /[\uD83C-\uDFFF\u2600-\u26FF\\\/:*?"<>|]+/g;
 const titleFsSafe = document.title.replace(re, "").trim();
 const { href, hostname, pathname, search, hash } = location;
 const urlFsSafe = `${hostname}${pathname}${search}${hash}`.replace(re, "_");
+
+const fnvHash = fnv1a(`${document.title}${href}`).toString(32);
+leftAvailable -= fnvHash.length;
 
 let safeTitle = titleFsSafe;
 let safeUrl = urlFsSafe;
