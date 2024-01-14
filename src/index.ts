@@ -35,9 +35,11 @@ if (leftAvailable < sumLength) {
   safeUrl = urlFsSafe.slice(0, leftAvailable - titlePart - 1);
 }
 
-if (!document.head.dataset.title4pdforiginaltitle) {
+if (!document.head.dataset.title4pdforiginaltitle || document.head.dataset.title4pdforiginalurl !== href) {
   document.head.dataset.title4pdforiginaltitle = document.title;
   document.title = `${safeUrl}${safeTitle}${fnvHash}`;
+
+  document.head.dataset.title4pdforiginalurl = href;
 }
 const originalTitle = document.head.dataset.title4pdforiginaltitle;
 
